@@ -40,6 +40,7 @@ import {AppComponent} from './app.component';
 import {InputDayComponent} from './components/input-day/input-day.component';
 import {InputMonthComponent} from './components/input-month/input-month.component';
 import {RouterModule, Routes} from '@angular/router';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   {
@@ -51,7 +52,7 @@ const appRoutes: Routes = [
     redirectTo: '/month',
     pathMatch: 'full'
   },
-  {path: '**', component: InputMonthComponent}
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 
@@ -59,12 +60,13 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     InputDayComponent,
-    InputMonthComponent
+    InputMonthComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: true} // <-- debugging purposes only
+      // {enableTracing: true} // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
@@ -75,6 +77,7 @@ const appRoutes: Routes = [
     MatInputModule,
     MatRadioModule,
     MatButtonModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

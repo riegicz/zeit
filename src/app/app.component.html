@@ -1,1 +1,16 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link
+     [routerLink]="'/month'"
+     [active]="true">
+    Stundeneingabe
+  </a>
+  <a mat-tab-link
+     [routerLink]="'/project'"
+     [active]="false">
+    Projektverwaltung
+  </a>
+</nav>
+
+<p></p>
+
 <router-outlet></router-outlet>
