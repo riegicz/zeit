@@ -1,0 +1,44 @@
+<mat-expansion-panel [expanded]="false" hideToggle="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{date}}</mat-panel-title>
+    <mat-panel-description>{{dayOfWeek}}</mat-panel-description>
+    <mat-icon>account_circle</mat-icon>
+  </mat-expansion-panel-header>
+
+  <mat-form-field>
+    <input matInput placeholder="Kommen">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Gehen">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Pause">
+  </mat-form-field>
+  <mat-radio-group>
+    <mat-radio-button value="1">Arbeit</mat-radio-button>
+    <mat-radio-button value="2">Urlaub</mat-radio-button>
+    <mat-radio-button value="3">GAZ</mat-radio-button>
+    <mat-radio-button value="4">krank</mat-radio-button>
+  </mat-radio-group>
+
+  <ul>
+    <li *ngFor="let activity of activities">
+      <mat-form-field>
+        <input matInput placeholder="Projekt">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Tätigkeit">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Stunden">
+      </mat-form-field>
+      <button mat-mini-fab (click)="addActivity(activity.nr)" *ngIf="isLastActivity(activity.nr)">+</button>
+      <button mat-mini-fab (click)="deleteActivity(activity.nr)" *ngIf="!isLastActivity(activity.nr)">-</button>
+    </li>
+  </ul>
+
+  <mat-action-row>
+    <button mat-button color="primary">Speichern</button>
+  </mat-action-row>
+
+</mat-expansion-panel>
