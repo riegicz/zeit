@@ -1,7 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgModule} from '@angular/core';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -37,18 +36,36 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
+import {AppComponent} from './app.component';
+import {InputDayComponent} from './components/input-day/input-day.component';
+import {InputMonthComponent} from './components/input-month/input-month.component';
+import {RouterModule, Routes} from '@angular/router';
 
-
-import { AppComponent } from './app.component';
-import { InputDayComponent } from './components/input-day/input-day.component';
+const appRoutes: Routes = [
+  {
+    path: 'month',
+    component: InputMonthComponent,
+  },
+  {
+    path: '',
+    redirectTo: '/month',
+    pathMatch: 'full'
+  },
+  {path: '**', component: InputMonthComponent}
+];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputDayComponent
+    InputDayComponent,
+    InputMonthComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: true} // <-- debugging purposes only
+    ),
     BrowserModule,
     BrowserAnimationsModule,
     MatExpansionModule,
@@ -62,4 +79,5 @@ import { InputDayComponent } from './components/input-day/input-day.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
