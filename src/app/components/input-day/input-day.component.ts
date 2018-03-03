@@ -43,6 +43,7 @@ export class InputDayComponent implements OnInit {
   }
 
   deleteActivity(i: number) {
-    this.activities.splice(i - 1, 1);
+    const index = this.activities.map(o => o.nr).indexOf(i);
+    this.activities.splice(index, 1);
   }
 }
