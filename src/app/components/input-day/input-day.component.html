@@ -1,19 +1,19 @@
 <mat-expansion-panel [expanded]="false" hideToggle="true" class="zeit-expansion-panel">
   <mat-expansion-panel-header>
     <mat-panel-title>{{dayOfWeek}}, {{date}}</mat-panel-title>
-    <span>{{overtime}}</span>
+    <span>Arbeitszeit {{overtime}}</span>
   </mat-expansion-panel-header>
 
   <form [formGroup]="inputDayForm">
 
     <mat-form-field>
-      <input matInput placeholder="Kommen" formControlName="arrival">
+      <input matInput placeholder="Kommen" type="time" formControlName="arrival">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Gehen" formControlName="leaving">
+      <input matInput placeholder="Gehen" type="time" formControlName="leaving">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Pause" formControlName="break">
+      <input matInput placeholder="Pause" type="time" formControlName="break">
     </mat-form-field>
     <mat-radio-group>
       <mat-radio-button value="1">Arbeit</mat-radio-button>
