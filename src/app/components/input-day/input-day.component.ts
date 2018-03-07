@@ -17,7 +17,7 @@ export class InputDayComponent implements OnInit {
   dayOfWeek: string;
 
   // displayed at the right upper corner of the panel
-  overtime: string = '00:00';
+  worktime: string = '00:00';
 
   activities: Activity[];
 
@@ -80,12 +80,12 @@ export class InputDayComponent implements OnInit {
       let hours: number = Math.floor(worktime / 60);
       let minutes: number = Math.abs(Math.floor(worktime % 60));
       if (minutes < 10) {
-        this.overtime = hours + ':0' + minutes;
+        this.worktime = hours + ':0' + minutes;
       } else {
-        this.overtime = hours + ':' + minutes;
+        this.worktime = hours + ':' + minutes;
       }
     } else {
-      this.overtime = '00:00';
+      this.worktime = '00:00';
     }
   }
 }
