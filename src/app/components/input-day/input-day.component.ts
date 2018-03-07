@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from '../../model/activity';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -15,15 +16,17 @@ export class InputDayComponent implements OnInit {
   @Input()
   dayOfWeek: string;
 
-  activities: Activity[];
-
+  // displayed at the right upper corner of the panel
   overtime: string = '00:00';
 
-  constructor() {
-    const activity = new Activity();
-    activity.nr = 1;
+  activities: Activity[];
+
+  inputDayForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
     this.activities = new Array<Activity>();
-    this.activities.push(activity);
+    this.addActivity(0);
+    this.inputDayForm = this.createForm();
   }
 
   ngOnInit() {
@@ -47,5 +50,18 @@ export class InputDayComponent implements OnInit {
   deleteActivity(i: number) {
     const index = this.activities.map(o => o.nr).indexOf(i);
     this.activities.splice(index, 1);
+  }
+
+  save() {
+    
+  }
+
+  private createForm() {
+    const timePattern = '([01]?[0-9]|2[0-3]):[0-5][0-9]';
+    return this.fb.group({
+      arrival: ['', [Validators.required, Validators.pattern(timePattern)]],
+      leaving: ['', [Validators.required, Validators.pattern(timePattern)]],
+      break: ['', [Validators.required, Validators.pattern(timePattern)]],
+    });
   }
 }

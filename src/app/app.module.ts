@@ -40,7 +40,8 @@ import {AppComponent} from './app.component';
 import {InputDayComponent} from './components/input-day/input-day.component';
 import {InputMonthComponent} from './components/input-month/input-month.component';
 import {RouterModule, Routes} from '@angular/router';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const appRoutes: Routes = [
   {
@@ -70,6 +71,8 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatDatepickerModule,
