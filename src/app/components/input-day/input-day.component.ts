@@ -17,6 +17,8 @@ export class InputDayComponent implements OnInit {
 
   activities: Activity[];
 
+  overtime: string = '00:00';
+
   constructor() {
     const activity = new Activity();
     activity.nr = 1;

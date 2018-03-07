@@ -1,8 +1,7 @@
 <mat-expansion-panel [expanded]="false" hideToggle="true">
   <mat-expansion-panel-header>
-    <mat-panel-title>{{date}}</mat-panel-title>
-    <mat-panel-description>{{dayOfWeek}}</mat-panel-description>
-    <mat-icon>account_circle</mat-icon>
+    <mat-panel-title>{{dayOfWeek}}, {{date}}</mat-panel-title>
+    <span>{{overtime}}</span>
   </mat-expansion-panel-header>
 
   <mat-form-field>
@@ -21,7 +20,7 @@
     <mat-radio-button value="4">krank</mat-radio-button>
   </mat-radio-group>
 
-  <ul>
+  <ul class="zeit-activities">
     <li *ngFor="let activity of activities">
       <mat-form-field>
         <input matInput placeholder="Projekt">
