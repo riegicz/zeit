@@ -30,9 +30,9 @@ export class InputDayComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.inputDayForm.get('arrival').valueChanges.subscribe(() => this.refreshOvertime());
-    this.inputDayForm.get('leaving').valueChanges.subscribe(() => this.refreshOvertime());
-    this.inputDayForm.get('break').valueChanges.subscribe(() => this.refreshOvertime());
+    this.inputDayForm.get('arrival').valueChanges.subscribe(() => this.refreshWorktime());
+    this.inputDayForm.get('leaving').valueChanges.subscribe(() => this.refreshWorktime());
+    this.inputDayForm.get('break').valueChanges.subscribe(() => this.refreshWorktime());
   }
 
   isLastActivity(i: number): boolean {
@@ -68,7 +68,7 @@ export class InputDayComponent implements OnInit {
     });
   }
 
-  private refreshOvertime() {
+  private refreshWorktime() {
     const someday = '1970-01-01 ';
     const dateArrival: number = new Date(someday + this.inputDayForm.get('arrival').value).getTime();
     const dateLeaving: number = new Date(someday + this.inputDayForm.get('leaving').value).getTime();
@@ -79,10 +79,15 @@ export class InputDayComponent implements OnInit {
       worktime /= 60000; // minutes
       let hours: number = Math.floor(worktime / 60);
       let minutes: number = Math.abs(Math.floor(worktime % 60));
-      if (minutes < 10) {
-        this.worktime = hours + ':0' + minutes;
+      if (hours < 10) {
+        this.worktime = '0' + hours;
       } else {
-        this.worktime = hours + ':' + minutes;
+        this.worktime = '' + hours;
+      }
+      if (minutes < 10) {
+        this.worktime += ':0' + minutes;
+      } else {
+        this.worktime += ':' + minutes;
       }
     } else {
       this.worktime = '00:00';
