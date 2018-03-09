@@ -42,8 +42,9 @@ import {InputMonthComponent} from './components/input-month/input-month.componen
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {BackendService} from "./services/backend.service";
 
-const appRoutes: Routes = [
+const appRoutes:Routes = [
   {
     path: 'month',
     component: InputMonthComponent,
@@ -66,8 +67,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(
-      appRoutes,
-      // {enableTracing: true} // <-- debugging purposes only
+      appRoutes
     ),
     BrowserModule,
     BrowserAnimationsModule,
@@ -82,8 +82,10 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatTabsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [BackendService,
+  ],
+  bootstrap: [AppComponent,
+  ]
 })
 export class AppModule {
 }

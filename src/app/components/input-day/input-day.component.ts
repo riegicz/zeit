@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from '../../model/activity';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {BackendService} from "../../services/backend.service";
 
 
 @Component({
@@ -11,19 +12,20 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class InputDayComponent implements OnInit {
 
   @Input()
-  date: string;
+  date:string;
 
   @Input()
-  dayOfWeek: string;
+  dayOfWeek:string;
 
   // displayed at the right upper corner of the panel
-  worktime: string = '00:00';
+  worktime:string = '00:00';
 
-  activities: Activity[];
+  activities:Activity[];
 
-  inputDayForm: FormGroup;
+  inputDayForm:FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb:FormBuilder,
+              private backendService:BackendService) {
     this.activities = new Array<Activity>();
     this.addActivity(0);
     this.inputDayForm = this.createForm();
@@ -35,7 +37,7 @@ export class InputDayComponent implements OnInit {
     this.inputDayForm.get('break').valueChanges.subscribe(() => this.refreshWorktime());
   }
 
-  isLastActivity(i: number): boolean {
+  isLastActivity(i:number):boolean {
     const maxNr = Math.max(...this.activities.map(o => o.nr));
     if (i === maxNr) {
       return true;
@@ -44,19 +46,24 @@ export class InputDayComponent implements OnInit {
     }
   }
 
-  addActivity(i: number) {
+  addActivity(i:number) {
     const activity = new Activity();
     activity.nr = i + 1;
     this.activities.push(activity);
   }
 
-  deleteActivity(i: number) {
+  deleteActivity(i:number) {
     const index = this.activities.map(o => o.nr).indexOf(i);
     this.activities.splice(index, 1);
   }
 
   save() {
-
+    this.backendService.saveADay()
+      .subscribe((success:boolean) => {
+        console.log(success);
+      }, (error) => {
+        console.log(error);
+      });
   }
 
   private createForm() {
@@ -70,15 +77,15 @@ export class InputDayComponent implements OnInit {
 
   private refreshWorktime() {
     const someday = '1970-01-01 ';
-    const dateArrival: number = new Date(someday + this.inputDayForm.get('arrival').value).getTime();
-    const dateLeaving: number = new Date(someday + this.inputDayForm.get('leaving').value).getTime();
-    const dateBreakStart: number = new Date(someday + '00:00').getTime();
-    const dateBreakEnd: number = new Date(someday + this.inputDayForm.get('break').value).getTime();
-    let worktime: number = dateLeaving - dateArrival - (dateBreakEnd - dateBreakStart);
+    const dateArrival:number = new Date(someday + this.inputDayForm.get('arrival').value).getTime();
+    const dateLeaving:number = new Date(someday + this.inputDayForm.get('leaving').value).getTime();
+    const dateBreakStart:number = new Date(someday + '00:00').getTime();
+    const dateBreakEnd:number = new Date(someday + this.inputDayForm.get('break').value).getTime();
+    let worktime:number = dateLeaving - dateArrival - (dateBreakEnd - dateBreakStart);
     if (worktime > 0) {
       worktime /= 60000; // minutes
-      let hours: number = Math.floor(worktime / 60);
-      let minutes: number = Math.abs(Math.floor(worktime % 60));
+      let hours:number = Math.floor(worktime / 60);
+      let minutes:number = Math.abs(Math.floor(worktime % 60));
       if (hours < 10) {
         this.worktime = '0' + hours;
       } else {
