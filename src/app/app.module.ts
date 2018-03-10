@@ -43,6 +43,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BackendService} from "./services/backend.service";
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 const appRoutes:Routes = [
   {
@@ -64,6 +65,7 @@ const appRoutes:Routes = [
     InputDayComponent,
     InputMonthComponent,
     PageNotFoundComponent,
+    SpinnerComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -81,6 +83,11 @@ const appRoutes:Routes = [
     MatRadioModule,
     MatButtonModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    SpinnerComponent,
   ],
   providers: [BackendService,
   ],

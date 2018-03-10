@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from '../../model/activity';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BackendService} from "../../services/backend.service";
+import {MatDialog} from '@angular/material';
+import {SpinnerComponent} from '../spinner/spinner.component';
 
 
 @Component({
@@ -25,7 +27,8 @@ export class InputDayComponent implements OnInit {
   inputDayForm:FormGroup;
 
   constructor(private fb:FormBuilder,
-              private backendService:BackendService) {
+              private backendService:BackendService,
+              public dialog: MatDialog) {
     this.activities = new Array<Activity>();
     this.addActivity(0);
     this.inputDayForm = this.createForm();
@@ -58,11 +61,14 @@ export class InputDayComponent implements OnInit {
   }
 
   save() {
+    let dialogRef = this.dialog.open(SpinnerComponent, {disableClose: true});
     this.backendService.saveADay()
       .subscribe((success:boolean) => {
         console.log(success);
+        dialogRef.close();
       }, (error) => {
         console.log(error);
+        dialogRef.close();
       });
   }
 
