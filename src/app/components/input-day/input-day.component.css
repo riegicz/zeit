@@ -4,3 +4,10 @@
 .zeit-activities {
   background: #F1F8E9;
 }
+.zeit-radio-group {
+  display: inline-flex;
+  flex-direction: row;
+}
+.zeit-radio-button {
+  margin: 7px;
+}
