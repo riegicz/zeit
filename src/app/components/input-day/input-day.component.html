@@ -39,6 +39,8 @@
       </li>
     </ul>
 
+    <app-alert [message]="errorMessage"></app-alert>
+
     <mat-action-row>
       <button mat-button color="primary" (click)="save()" [disabled]="inputDayForm.invalid">Speichern</button>
     </mat-action-row>

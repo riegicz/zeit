@@ -26,6 +26,8 @@ export class InputDayComponent implements OnInit {
 
   inputDayForm:FormGroup;
 
+  errorMessage: string;
+
   constructor(private fb:FormBuilder,
               private backendService:BackendService,
               public dialog: MatDialog) {
@@ -61,12 +63,14 @@ export class InputDayComponent implements OnInit {
   }
 
   save() {
+    this.errorMessage = null;
     let dialogRef = this.dialog.open(SpinnerComponent, {disableClose: true});
     this.backendService.saveADay()
       .subscribe((success:boolean) => {
         console.log(success);
         dialogRef.close();
       }, (error) => {
+        this.errorMessage = 'Fehler beim Speichern';
         console.log(error);
         dialogRef.close();
       });

@@ -41,11 +41,13 @@ import {InputDayComponent} from './components/input-day/input-day.component';
 import {InputMonthComponent} from './components/input-month/input-month.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {BackendService} from "./services/backend.service";
-import { SpinnerComponent } from './components/spinner/spinner.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BackendService} from './services/backend.service';
+import {SpinnerComponent} from './components/spinner/spinner.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { AlertComponent } from './components/alert/alert.component';
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
   {
     path: 'month',
     component: InputMonthComponent,
@@ -66,6 +68,7 @@ const appRoutes:Routes = [
     InputMonthComponent,
     PageNotFoundComponent,
     SpinnerComponent,
+    AlertComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -73,6 +76,7 @@ const appRoutes:Routes = [
     ),
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
@@ -85,6 +89,7 @@ const appRoutes:Routes = [
     MatTabsModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatCardModule,
   ],
   entryComponents: [
     SpinnerComponent,
