@@ -1,7 +1,6 @@
 <mat-accordion class="example-headers-align">
-  <app-input-day [date]="'1. März 2018'" [dayOfWeek]="'Donnerstag'"></app-input-day>
-  <p></p>
-  <app-input-day [date]="'2. März 2018'" [dayOfWeek]="'Freitag'"></app-input-day>
-  <p></p>
-  <app-input-day [date]="'3. März 2018'" [dayOfWeek]="'Samstag'"></app-input-day>
+  <div *ngFor="let d of allDays">
+    <app-input-day date="{{d.date}}" [dayOfWeek]="d.dayOfWeek"></app-input-day>
+    <p></p>
+  </div>
 </mat-accordion>
