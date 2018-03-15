@@ -7,28 +7,30 @@ import * as moment from 'moment';
   styleUrls: ['./input-month.component.css']
 })
 export class InputMonthComponent implements OnInit {
+  allDays = this.daysInMonth();
 
   constructor() { }
 
   ngOnInit() {
   }
+
+
   daysInMonth(): Array<any> {
-    var currentYear = new Date().getFullYear();
-    var currentMonth = new Date().getMonth();
-    var date = new Date(currentYear, currentMonth, 1);
-    var days: Array<any> = [];
+    const currentYear = new Date().getFullYear(),
+    currentMonth = new Date().getMonth(),
+    date = new Date(currentYear, currentMonth, 1),
+    days: Array<any> = [];
     while (date.getMonth() === currentMonth) {
-      var weekDayName =  moment(date).format('dddd');
-      var monthName =  moment(date).format('LL');
+      const weekDayName =  moment(date).format('dddd');
+      const monthName =  moment(date).format('LL');
       days.push({
         date: monthName,
         dayOfWeek: weekDayName
       });
-      //days.push(moment(new Date(date)).format('MMMM / YYYY'));
       date.setDate(date.getDate() + 1);
     }
     return days;
   }
 
-  allDays = this.daysInMonth();
+
 }
