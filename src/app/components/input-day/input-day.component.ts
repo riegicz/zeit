@@ -82,6 +82,7 @@ export class InputDayComponent implements OnInit {
       arrival: ['', [Validators.required, Validators.pattern(timePattern)]],
       leaving: ['', [Validators.required, Validators.pattern(timePattern)]],
       break: ['', [Validators.required, Validators.pattern(timePattern)]],
+      time: ['', [Validators.required, Validators.pattern(timePattern)]],
     });
   }
 

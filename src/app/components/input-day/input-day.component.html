@@ -26,13 +26,15 @@
     <ul class="zeit-activities">
       <li *ngFor="let activity of activities">
         <mat-form-field>
-          <input matInput placeholder="Projekt">
+          <mat-select placeholder="Projekt">
+            <mat-option [value]="1">Projekt 1</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Tätigkeit">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="number" placeholder="Stunden">
+          <input matInput placeholder="Zeit" type="time" formControlName="time">
         </mat-form-field>
         <button mat-mini-fab (click)="addActivity(activity.nr)" *ngIf="isLastActivity(activity.nr)">+</button>
         <button mat-mini-fab (click)="deleteActivity(activity.nr)" *ngIf="!isLastActivity(activity.nr)">-</button>
