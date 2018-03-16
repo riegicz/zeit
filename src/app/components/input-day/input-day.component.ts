@@ -16,17 +16,13 @@ export class InputDayComponent implements OnInit {
   static timePattern = '([01]?[0-9]|2[0-3]):[0-5][0-9]';
 
   @Input()
-  date: string;
-
-  @Input()
-  dayOfWeek: string;
+  date: Date;
 
   // displayed at the right upper corner of the panel
   worktime: string = '00:00';
-
   inputDayForm: FormGroup;
-
   errorMessage: string;
+  panelClass: string;
 
   constructor(private fb: FormBuilder,
               private backendService: BackendService,
@@ -41,6 +37,14 @@ export class InputDayComponent implements OnInit {
     this.inputDayForm.get('leaving').valueChanges.subscribe(() => this.refreshWorktime());
     this.inputDayForm.get('break').valueChanges.subscribe(() => this.refreshWorktime());
     this.inputDayForm.get('typeOfDay').valueChanges.subscribe(() => this.handleForm());
+
+    if (this.date.getDay() === 0 || this.date.getDay() === 6) { // Saturday or Sunday, TODO
+      this.panelClass = 'zeit-expansion-panel-dark';
+      this.inputDayForm.get('typeOfDay').setValue('2');
+    } else {
+      this.panelClass = 'zeit-expansion-panel-light';
+      this.inputDayForm.get('typeOfDay').setValue('1');
+    }
   }
 
   private createForm() {
@@ -55,6 +59,7 @@ export class InputDayComponent implements OnInit {
 
   private handleForm() {
     if (this.inputDayForm.get('typeOfDay').value !== '1') {
+      // controls must be disabled, otherwise the validators would do their job
       this.inputDayForm.get('arrival').disable();
       this.inputDayForm.get('leaving').disable();
       this.inputDayForm.get('break').disable();

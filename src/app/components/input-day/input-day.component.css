@@ -1,5 +1,8 @@
-.zeit-expansion-panel {
+.zeit-expansion-panel-light {
   background: #E0F2F1;
+}
+.zeit-expansion-panel-dark {
+  background: #B2DFDB;
 }
 .zeit-activities {
   background: #F1F8E9;
