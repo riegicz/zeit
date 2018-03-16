@@ -23,21 +23,21 @@
       <mat-radio-button class="zeit-radio-button" value="5">krank</mat-radio-button>
     </mat-radio-group>
 
-    <ul class="zeit-activities">
-      <li *ngFor="let activity of activities">
+    <ul class="zeit-activities" formArrayName="activities">
+      <li *ngFor="let activity of activites.controls; let i=index" [formGroupName]="i">
         <mat-form-field>
-          <mat-select placeholder="Projekt">
+          <mat-select placeholder="Projekt" formControlName="actProject">
             <mat-option [value]="1">Projekt 1</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Tätigkeit">
+          <input matInput placeholder="Tätigkeit" formControlName="actDescription">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Zeit" type="time" formControlName="time">
+          <input matInput placeholder="Zeit" type="time" formControlName="actTime">
         </mat-form-field>
-        <button mat-mini-fab (click)="addActivity(activity.nr)" *ngIf="isLastActivity(activity.nr)">+</button>
-        <button mat-mini-fab (click)="deleteActivity(activity.nr)" *ngIf="!isLastActivity(activity.nr)">-</button>
+        <button mat-mini-fab (click)="addActivity()" *ngIf="(i + 1) === inputDayForm.controls['activities'].controls.length">+</button>
+        <button mat-mini-fab (click)="removeActivity(i)" *ngIf="(i + 1) < inputDayForm.controls['activities'].controls.length">-</button>
       </li>
     </ul>
 
