@@ -34,7 +34,6 @@ export class InputDayComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.inputDayForm = this.createForm();
     this.addActivity();
 
@@ -48,15 +47,16 @@ export class InputDayComponent implements OnInit {
       arrival: ['', [Validators.required, Validators.pattern(InputDayComponent.timePattern)]],
       leaving: ['', [Validators.required, Validators.pattern(InputDayComponent.timePattern)]],
       break: ['', [Validators.required, Validators.pattern(InputDayComponent.timePattern)]],
+      typeOfDay: ['', [Validators.required]],
       activities: this.fb.array([])
     });
   }
 
   initActivity() {
     return this.fb.group({
-      actProject: '',
-      actDescription: '',
-      actTime: '',
+      actProject: ['', [Validators.required]],
+      actDescription: ['', [Validators.required]],
+      actTime: ['', [Validators.required, Validators.pattern(InputDayComponent.timePattern)]],
     });
   }
 
@@ -73,7 +73,7 @@ export class InputDayComponent implements OnInit {
 
   get activites(): FormArray {
     return this.inputDayForm.get('activities') as FormArray;
-  };
+  }
 
   private refreshWorktime() {
     const someday = '1970-01-01 ';
