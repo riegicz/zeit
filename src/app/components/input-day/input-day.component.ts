@@ -40,6 +40,7 @@ export class InputDayComponent implements OnInit {
     this.inputDayForm.get('arrival').valueChanges.subscribe(() => this.refreshWorktime());
     this.inputDayForm.get('leaving').valueChanges.subscribe(() => this.refreshWorktime());
     this.inputDayForm.get('break').valueChanges.subscribe(() => this.refreshWorktime());
+    this.inputDayForm.get('typeOfDay').valueChanges.subscribe(() => this.handleForm());
   }
 
   private createForm() {
@@ -50,6 +51,20 @@ export class InputDayComponent implements OnInit {
       typeOfDay: ['', [Validators.required]],
       activities: this.fb.array([])
     });
+  }
+
+  private handleForm() {
+    if (this.inputDayForm.get('typeOfDay').value !== '1') {
+      this.inputDayForm.get('arrival').disable();
+      this.inputDayForm.get('leaving').disable();
+      this.inputDayForm.get('break').disable();
+      this.inputDayForm.get('activities').disable();
+    } else {
+      this.inputDayForm.get('arrival').enable();
+      this.inputDayForm.get('leaving').enable();
+      this.inputDayForm.get('break').enable();
+      this.inputDayForm.get('activities').enable();
+    }
   }
 
   initActivity() {

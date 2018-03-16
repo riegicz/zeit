@@ -6,15 +6,17 @@
 
   <form [formGroup]="inputDayForm">
 
-    <mat-form-field>
-      <input matInput placeholder="Kommen" type="time" formControlName="arrival">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Gehen" type="time" formControlName="leaving">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Pause" type="time" formControlName="break">
-    </mat-form-field>
+    <span *ngIf="inputDayForm.get('typeOfDay').value === '1'">
+      <mat-form-field>
+        <input matInput placeholder="Kommen" type="time" formControlName="arrival">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Gehen" type="time" formControlName="leaving">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Pause" type="time" formControlName="break">
+      </mat-form-field>
+    </span>
     <mat-radio-group class="zeit-radio-group" formControlName="typeOfDay">
       <mat-radio-button class="zeit-radio-button" value="1">Arbeit</mat-radio-button>
       <mat-radio-button class="zeit-radio-button" value="2">frei</mat-radio-button>
@@ -23,7 +25,7 @@
       <mat-radio-button class="zeit-radio-button" value="5">krank</mat-radio-button>
     </mat-radio-group>
 
-    <ul class="zeit-activities" formArrayName="activities">
+    <ul class="zeit-activities" formArrayName="activities" *ngIf="inputDayForm.get('typeOfDay').value === '1'">
       <li *ngFor="let activity of activites.controls; let i=index" [formGroupName]="i">
         <mat-form-field>
           <mat-select placeholder="Projekt" formControlName="actProject">
