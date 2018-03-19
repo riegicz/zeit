@@ -1,7 +1,7 @@
-<mat-accordion>
-  <app-input-day [date]="days[0]"></app-input-day>
-  <p></p>
-  <app-input-day [date]="days[1]"></app-input-day>
-  <p></p>
-  <app-input-day [date]="days[2]"></app-input-day>
+<mat-accordion class="example-headers-align">
+  <div *ngFor="let d of allDays; let i = index">
+    <app-input-day [date]="d.day"></app-input-day>
+    <p></p>
+  </div>
 </mat-accordion>
+<!--[ngClass]="{'zeit-expansion-panel-dark': day.getDay()=='6'}"-->

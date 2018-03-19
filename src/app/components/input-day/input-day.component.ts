@@ -38,13 +38,13 @@ export class InputDayComponent implements OnInit {
     this.inputDayForm.get('break').valueChanges.subscribe(() => this.refreshWorktime());
     this.inputDayForm.get('typeOfDay').valueChanges.subscribe(() => this.handleForm());
 
-    if (this.date.getDay() === 0 || this.date.getDay() === 6) { // Saturday or Sunday, TODO
+    /*if (this.date.getDay() === 0 || this.date.getDay() === 6) { // Saturday or Sunday, TODO
       this.panelClass = 'zeit-expansion-panel-dark';
       this.inputDayForm.get('typeOfDay').setValue('2');
     } else {
       this.panelClass = 'zeit-expansion-panel-light';
       this.inputDayForm.get('typeOfDay').setValue('1');
-    }
+    }*/
   }
 
   private createForm() {
