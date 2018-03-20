@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-input-month',
@@ -7,31 +6,30 @@ import * as moment from 'moment';
   styleUrls: ['./input-month.component.css']
 })
 export class InputMonthComponent implements OnInit {
-  allDays = this.daysInMonth();
 
-  constructor() { }
+  @Input()
+  year: number;
+  @Input()
+  month: number;
+
+  allDays = new Array<Date>();
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.year = 2018; // TODO
+    this.month = 3; // TODO
+    this.allDays = this.daysInMonth();
   }
 
 
-  daysInMonth(): Array<any> {
-    const currentYear = new Date().getFullYear(),
-    currentMonth = new Date().getMonth(),
-    date = new Date(currentYear, currentMonth, 1),
-    days: Array<any> = [];
-    while (date.getMonth() === currentMonth) {
-      var _isWeekDay = true;
-      if (date.getDay() === 0 || date.getDay() === 6) {
-        _isWeekDay = false;
-      }
-
-      const monthName =  moment(date).format('LL');
-      days.push({
-          day: moment(date),
-          isWeekday : _isWeekDay
-      });
-      date.setDate(date.getDate() + 1);
+  daysInMonth(): Array<Date> {
+    const date = new Date(this.year, this.month, 0);
+    let days = new Array<Date>();
+    for(let i:number = 1; i < date.getDate(); i++) {
+      const iDate = new Date(this.year, this.month, i);
+      days.push(iDate);
     }
     return days;
   }
