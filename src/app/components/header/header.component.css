@@ -2,8 +2,9 @@
   background-color: #F6F6F6;
   position: fixed;
   top:0;
+  margin-left: 15%;
   left:0;
-  width:100%;
+  width:85%;
 }
 /*
 #content {
@@ -22,7 +23,8 @@
   margin-left: 5px;
 }
 .header-icon{
-  margin: 25px;
+  margin: 15px;
+  font-size: 30px!important;
   cursor: pointer;
 }
 .material-icons {

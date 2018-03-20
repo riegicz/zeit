@@ -1,20 +1,25 @@
-<app-header title='AppName'></app-header>
-<nav id="app-nav" mat-tab-nav-bar>
-  <a mat-tab-link
-     [routerLink]="'/month'"
-     [active]="true">
-    Stundeneingabe
-  </a>
-  <a mat-tab-link
-     [routerLink]="'/project'"
-     [active]="false">
-    Projektverwaltung
-  </a>
-</nav>
+<app-sidenav></app-sidenav>
 
-<p></p>
+<div id="content-wrapper">
+  <app-header title='AppName'></app-header>
+
+  <nav id="app-nav" mat-tab-nav-bar>
+    <a mat-tab-link
+       [routerLink]="'/month'"
+       [active]="true">
+      Stundeneingabe
+    </a>
+    <a mat-tab-link
+       [routerLink]="'/project'"
+       [active]="false">
+      Projektverwaltung
+    </a>
+  </nav>
+
+  <p></p>
 
 
 
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>

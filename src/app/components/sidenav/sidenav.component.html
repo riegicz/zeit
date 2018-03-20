@@ -1,0 +1,14 @@
+<mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+             (closed)="events.push('close!')">
+  <ul>
+    <li>
+      <button mat-raised-button>
+      </button>
+    </li>
+    <li>
+      <button mat-raised-button>
+        Projektverwaltung
+      </button>
+    </li>
+  </ul>
+</mat-sidenav>
