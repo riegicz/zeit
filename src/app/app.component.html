@@ -1,4 +1,5 @@
-<nav mat-tab-nav-bar>
+<app-header title='AppName'></app-header>
+<nav id="app-nav" mat-tab-nav-bar>
   <a mat-tab-link
      [routerLink]="'/month'"
      [active]="true">
@@ -13,4 +14,7 @@
 
 <p></p>
 
+
+
 <router-outlet></router-outlet>
+<app-footer></app-footer>
