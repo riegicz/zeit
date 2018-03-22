@@ -1,6 +1,8 @@
 <mat-accordion>
-  <div *ngFor="let d of allDays">
-    <app-input-day [date]="d"></app-input-day>
-    <p></p>
+  <div id="days-wrapper">
+    <div *ngFor="let d of allDays">
+      <app-input-day [date]="d"></app-input-day>
+      <p></p>
+    </div>
   </div>
 </mat-accordion>

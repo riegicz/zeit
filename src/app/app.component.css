@@ -3,5 +3,17 @@
 }
 
 #content-wrapper{
-  margin-left: 15%;
+  /*margin-left: 0px;
+  margin-top: 80px;
+  margin-right: 5%;*/
+  position:absolute;
+  top: 80px;
+  left: 0px;
+  right:0px;
+  bottom:0px;
+  overflow-y:scroll;
+}
+
+.ng-star-inserted{
+  margin-left: 25%!important;
 }
