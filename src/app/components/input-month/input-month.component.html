@@ -1,3 +1,13 @@
+<div id="month-selector-wrapper">
+  <mat-form-field id="month-selector">
+    <mat-select [(value)]="current_month" (selectionChange)="changeValue($event)">
+      <mat-option *ngFor="let month of months" [value]="month">
+        {{ month }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
 <mat-accordion>
   <div id="days-wrapper">
     <div *ngFor="let d of allDays">

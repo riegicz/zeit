@@ -8,7 +8,5 @@ import * as moment from 'moment';
 })
 export class AppComponent {
   title = 'app';
-  months = moment.months();
-  check = moment();
-  current_month  = this.check.format('MMMM');
+
 }

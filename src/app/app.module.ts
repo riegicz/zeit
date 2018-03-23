@@ -48,7 +48,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AlertComponent } from './components/alert/alert.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 const appRoutes: Routes = [
   {
@@ -74,7 +73,6 @@ const appRoutes: Routes = [
     AlertComponent,
     HeaderComponent,
     FooterComponent,
-    SidenavComponent,
   ],
   imports: [
     RouterModule.forRoot(
