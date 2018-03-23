@@ -4,18 +4,29 @@
 
   <app-sidenav></app-sidenav>
 
-  <nav id="app-nav" mat-tab-nav-bar>
-    <a mat-tab-link
-       [routerLink]="'/month'"
-       [active]="true">
-      Stundeneingabe
-    </a>
-    <a mat-tab-link
-       [routerLink]="'/project'"
-       [active]="false">
-      Projektverwaltung
-    </a>
-  </nav>
+  <div id="app-nav" >
+    <nav mat-tab-nav-bar>
+
+      <a mat-tab-link
+         [routerLink]="'/month'"
+         [active]="true">
+        Stundeneingabe
+      </a>
+      <a mat-tab-link
+         [routerLink]="'/project'"
+         [active]="false">
+        Projektverwaltung
+      </a>
+
+    </nav>
+    <mat-form-field id="month-selector">
+      <mat-select [(value)]="current_month">
+        <mat-option *ngFor="let month of months" [value]="month">
+          {{ month }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
   <p></p>
 

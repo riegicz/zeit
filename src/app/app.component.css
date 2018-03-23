@@ -1,5 +1,6 @@
 #app-nav{
-  /*margin-top: 88px;*/
+  width: 83%;
+  margin-left: 17%;
 }
 
 #content-wrapper{
@@ -7,7 +8,7 @@
   margin-top: 80px;
   margin-right: 5%;*/
   position:absolute;
-  top: 80px;
+  top: 75px;
   left: 0px;
   right:0px;
   bottom:0px;

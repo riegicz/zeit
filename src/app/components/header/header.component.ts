@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import moment = require('moment');
+import {lang} from 'moment';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +14,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/profile');
   };
 */
+  languages = ['Deutsch', 'English'];
+  default_lang = this.languages[0];
+
   constructor() { }
 
   ngOnInit() {

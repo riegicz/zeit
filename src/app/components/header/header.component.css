@@ -7,27 +7,34 @@
   left:0;
   width:100%;*/
 }
-/*
-#content {
-  margin-top: 100px;
-}*/
+
+#lang-selector{
+  float: right;
+  margin-right: 15px;
+  width: 100px;
+}
 
 .inline-element{
   display:inline-block;
 }
+
 .push-right{
   float: right;
   margin-top: 9px;
   : right;
 }
+
 #header-title{
   margin-left: 5px;
 }
+
 .header-icon{
   margin: 15px;
-  font-size: 30px!important;
+  margin-right: 30px;
+  font-size: 33px!important;
   cursor: pointer;
 }
+
 .material-icons {
   font-size: 35px;
 }
