@@ -1,0 +1,25 @@
+<div id="header">
+  <!--<a>-->
+    <!--<mat-icon class="inline-element header-icon">dehaze</mat-icon>-->
+  <!--</a>-->
+  <a>
+    <span class="header-text">
+      <h2 class="inline-element" id="header-title">{{title}}</h2>
+      </span>
+  </a>
+  <a>
+    <mat-icon class="push-right inline-element header-icon"
+              ng-reflect-router-link="/profile"
+              ng-reflect-active="false"
+              href="/profile">account_circle</mat-icon>
+  </a>
+
+  <mat-form-field id="lang-selector">
+    <mat-select [(value)]="default_lang">
+      <mat-option *ngFor="let lang of languages" [value]="lang">
+        {{ lang }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>

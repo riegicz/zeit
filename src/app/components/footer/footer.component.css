@@ -1,0 +1,21 @@
+.footer-text {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+#footer{
+  background-color: #363636;
+  color: white;
+  padding: 20px;
+}
+
+#footer a{
+  color: white;
+}
+
+#footer-right{
+  float: right;
+}
+
+#footer .material-icons{
+  font-size: 20px;
+}

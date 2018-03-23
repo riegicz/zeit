@@ -1,1 +1,15 @@
+#days-wrapper{
+  margin-left: 2%;
+  padding-right: 2%;
+}
 
+#month-selector{
+  float: right;
+  margin-right: 2%;
+  height: 69px;
+  width: 140px;
+}
+
+#month-selector-wrapper{
+  height: 70px;
+}
