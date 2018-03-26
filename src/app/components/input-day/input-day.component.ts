@@ -14,12 +14,13 @@ import {SpinnerComponent} from '../spinner/spinner.component';
 export class InputDayComponent implements OnInit {
 
   static timePattern = '([01]?[0-9]|2[0-3]):[0-5][0-9]';
+  static zeroTime = '00:00';
 
   @Input()
   date: Date;
 
   // displayed at the right upper corner of the panel
-  worktime: string = '00:00';
+  worktime: string = InputDayComponent.zeroTime;
   inputDayForm: FormGroup;
   errorMessage: string;
   panelClass: string;
@@ -64,11 +65,13 @@ export class InputDayComponent implements OnInit {
       this.inputDayForm.get('leaving').disable();
       this.inputDayForm.get('break').disable();
       this.inputDayForm.get('activities').disable();
+      this.worktime = InputDayComponent.zeroTime;
     } else {
       this.inputDayForm.get('arrival').enable();
       this.inputDayForm.get('leaving').enable();
       this.inputDayForm.get('break').enable();
       this.inputDayForm.get('activities').enable();
+      this.refreshWorktime();
     }
   }
 
@@ -117,7 +120,7 @@ export class InputDayComponent implements OnInit {
         this.worktime += ':' + minutes;
       }
     } else {
-      this.worktime = '00:00';
+      this.worktime = InputDayComponent.zeroTime;
     }
   }
 
