@@ -1,8 +1,8 @@
 <div id="month-selector-wrapper">
   <mat-form-field id="month-selector">
-    <mat-select [(value)]="current_month" (selectionChange)="changeValue($event)">
-      <mat-option *ngFor="let month of months" [value]="month">
-        {{ month }}
+    <mat-select [(value)]="month" (selectionChange)="changeValue($event)">
+      <mat-option *ngFor="let m of months; let i = index;" [value]="i">
+        {{ m }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -10,7 +10,7 @@
 
 <mat-accordion>
   <div id="days-wrapper">
-    <div *ngFor="let d of allDays">
+    <div *ngFor="let d of days">
       <app-input-day [date]="d"></app-input-day>
       <p></p>
     </div>
