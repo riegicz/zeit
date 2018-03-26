@@ -1,11 +1,6 @@
 #header{
-  background-color: #F6F6F6;
+  background: linear-gradient(to bottom right, red, yellow);
   height: 75px;
-  /*position: fixed;
-  top:0;
-  margin-left: 0px;
-  left:0;
-  width:100%;*/
 }
 
 #lang-selector{
