@@ -40,7 +40,6 @@ export class InputMonthComponent implements OnInit {
     for (let i:number = 1; i < date.getDate(); i++) {
       const iDate = new Date(this.year, this.month, i);
       days.push(iDate);
-      i++;
     }
     return days;
   }
