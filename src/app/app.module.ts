@@ -96,6 +96,7 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatCardModule,
     MatSelectModule,
+    MatMenuModule
   ],
   entryComponents: [
     SpinnerComponent,
