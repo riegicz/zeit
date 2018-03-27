@@ -1,12 +1,14 @@
-<div id="month-selector-wrapper">
-  <mat-form-field id="month-selector">
-    <mat-select [(value)]="month" (selectionChange)="changeValue($event)">
-      <mat-option *ngFor="let m of months; let i = index;" [value]="i">
-        {{ m }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+<form [formGroup]="inputMonthForm">
+  <div id="month-selector-wrapper">
+    <mat-form-field id="month-selector">
+      <mat-select formControlName="month">
+        <mat-option *ngFor="let m of months; let i = index;" [value]="i">
+          {{ m }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>
 
 <mat-accordion>
   <div id="days-wrapper">
