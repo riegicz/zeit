@@ -78,6 +78,7 @@ export class InputDayComponent implements OnInit {
   initActivity() {
     return this.fb.group({
       actProject: ['', [Validators.required]],
+      actPackage: ['', [Validators.required]],
       actDescription: ['', [Validators.required]],
       actTime: ['', [Validators.required, Validators.pattern(InputDayComponent.timePattern)]],
     });
