@@ -48,6 +48,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AlertComponent } from './components/alert/alert.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TimePipe } from './pipes/time.pipe';
 
 const appRoutes: Routes = [
   {
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
     AlertComponent,
     HeaderComponent,
     FooterComponent,
+    TimePipe,
   ],
   imports: [
     RouterModule.forRoot(
@@ -97,6 +99,9 @@ const appRoutes: Routes = [
     MatCardModule,
     MatSelectModule,
     MatMenuModule
+  ],
+  exports: [
+    TimePipe,
   ],
   entryComponents: [
     SpinnerComponent,
