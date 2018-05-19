@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Activity} from '../../model/activity';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {BackendService} from "../../services/backend.service";
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {BackendService} from '../../services/backend.service';
 import {MatDialog} from '@angular/material';
 import {SpinnerComponent} from '../spinner/spinner.component';
+import * as moment from 'moment';
+import {Moment} from 'moment';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class InputDayComponent implements OnInit {
   static zeroTime = '00:00';
 
   @Input()
-  date: Date;
+  date: Moment;
 
   // displayed at the right upper corner of the panel
   worktime: string = InputDayComponent.zeroTime;
@@ -39,7 +40,7 @@ export class InputDayComponent implements OnInit {
     this.inputDayForm.get('break').valueChanges.subscribe(() => this.refreshWorktime());
     this.inputDayForm.get('typeOfDay').valueChanges.subscribe(() => this.handleForm());
 
-    if (this.date.getDay() === 0 || this.date.getDay() === 6) { // Saturday or Sunday, TODO
+    if (this.date.day() === 0 || this.date.day() === 6) { // Saturday or Sunday, TODO
       this.panelClass = 'zeit-expansion-panel-dark';
       this.inputDayForm.get('typeOfDay').setValue('2');
     } else {
@@ -108,8 +109,8 @@ export class InputDayComponent implements OnInit {
     let worktime: number = dateLeaving - dateArrival - (dateBreakEnd - dateBreakStart);
     if (worktime > 0) {
       worktime /= 60000; // minutes
-      let hours: number = Math.floor(worktime / 60);
-      let minutes: number = Math.abs(Math.floor(worktime % 60));
+      const hours: number = Math.floor(worktime / 60);
+      const minutes: number = Math.abs(Math.floor(worktime % 60));
       if (hours < 10) {
         this.worktime = '0' + hours;
       } else {
@@ -127,7 +128,7 @@ export class InputDayComponent implements OnInit {
 
   save() {
     this.errorMessage = null;
-    let dialogRef = this.dialog.open(SpinnerComponent, {disableClose: true});
+    const dialogRef = this.dialog.open(SpinnerComponent, {disableClose: true});
     this.backendService.saveADay()
       .subscribe((success: boolean) => {
         console.log(success);

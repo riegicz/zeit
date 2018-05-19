@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {
   MatButtonModule,
   MatCardModule,
@@ -30,8 +30,10 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {TimePipe} from './pipes/time.pipe';
 import {OverviewComponent} from './components/overview/overview.component';
-import {AppRoutingModule} from "./app-routing.module";
-
+import {AppRoutingModule} from './app-routing.module';
+import localeDe from '@angular/common/locales/de';
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import {AppRoutingModule} from "./app-routing.module";
   entryComponents: [
     SpinnerComponent,
   ],
-  providers: [BackendService,
+  providers: [
+    BackendService,
+    {provide: LOCALE_ID, useValue: 'de'},
   ],
   bootstrap: [AppComponent,
   ]
