@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import * as moment from 'moment';
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,10 @@ import * as moment from 'moment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  navLinks = [
+    {path: '/month', label: 'Stundeneingabe'},
+    {path: '/overview', label: 'Übersicht'},
+    ];
 
 }

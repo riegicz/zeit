@@ -1,21 +1,13 @@
 <app-header></app-header>
 <div id="content-wrapper">
-  <div id="app-nav" >
+  <div id="app-nav">
     <nav mat-tab-nav-bar>
       <a mat-tab-link
-         [routerLink]="'/month'"
-         [active]="true">
-        Stundeneingabe
-      </a>
-      <a mat-tab-link
-         [routerLink]="'/overview'"
-         [active]="false">
-        Übersicht
-      </a>
-      <a mat-tab-link
-         [routerLink]="'/project'"
-         [active]="false">
-        Projektverwaltung
+         *ngFor="let link of navLinks"
+         [routerLink]="link.path"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        {{link.label}}
       </a>
     </nav>
   </div>
