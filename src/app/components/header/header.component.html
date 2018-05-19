@@ -3,30 +3,13 @@
     <mat-icon class="inline-element header-icon" id="app-logo">access_time</mat-icon>
     <span class="inline-element" id="header-title">Z E I T</span>
   </a>
-  <!--a>
-    <mat-icon class="push-right inline-element header-icon last-icon"
-              ng-reflect-router-link="/profile"
-              ng-reflect-active="false"
-              href="/profile">account_circle</mat-icon>
-  </a-->
   <mat-icon class="push-right inline-element header-icon btn-icon"
             mat-button [matMenuTriggerFor]="menu">
     account_circle
   </mat-icon>
   <mat-menu #menu="matMenu"
             overlapTrigger="false">
-    <button mat-menu-item>Profile</button>
+    <button mat-menu-item>Profil</button>
     <button mat-menu-item>Abmelden</button>
   </mat-menu>
-
-
-
-  <mat-form-field id="lang-selector">
-    <mat-select [(value)]="default_lang">
-      <mat-option *ngFor="let lang of languages" [value]="lang">
-        {{ lang }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
 </div>
