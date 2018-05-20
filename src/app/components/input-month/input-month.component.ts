@@ -30,11 +30,12 @@ export class InputMonthComponent implements OnInit {
   }
 
   daysInMonth(): Array<Moment> {
-    const date = new Date(this.year, this.inputMonthForm.get('month').value + 1, 0);
+    // selected month
+    const date: string = String(this.year) + '-' + String(this.inputMonthForm.get('month').value + 1);
     const days = new Array<Moment>();
-    for (let i = 1; i <= date.getDate(); i++) {
-      const iDate = new Date(this.year, this.inputMonthForm.get('month').value, i);
-      days.push(moment(iDate));
+    const start: Moment = moment(date, 'YYYY-MM');
+    for (const end = moment(start).add(1, 'month'); start.isBefore(end); start.add(1, 'day')) {
+      days.push(moment(start));
     }
     return days;
   }
@@ -45,7 +46,7 @@ export class InputMonthComponent implements OnInit {
 
   private createForm() {
     return this.fb.group({
-      month: ['', ],
+      month: ['',],
     });
   }
 
