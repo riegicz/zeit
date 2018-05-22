@@ -139,4 +139,10 @@ export class InputDayComponent implements OnInit {
         dialogRef.close();
       });
   }
+
+  isToday() {
+    if (moment(this.date).format("YYYY-MM-DD") === moment(moment()).format("YYYY-MM-DD")) {
+      return true;
+    }
+  }
 }
