@@ -1,8 +1,14 @@
+.zeit-card-light {
+  background: #E0F2F1;
+}
+
 .table-container {
   display: flex;
   flex-direction: column;
   max-height: 500px;
   min-width: 300px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .mat-table {
@@ -16,4 +22,12 @@
 
 .mat-row:nth-child(2n) {
   background-color: #f5f5f5
+}
+
+.totals-row {
+  position: sticky;
+  bottom: 0;
+  background: #f5f5f5;
+  border-top: 1px solid #CCC;
+  font-weight: bold;
 }

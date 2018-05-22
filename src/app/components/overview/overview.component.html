@@ -1,6 +1,51 @@
 <p></p>
 
 <div class="table-container mat-elevation-z8">
+  <mat-card class="zeit-card-light">
+    <mat-card-content>
+      <div class="flex-row">
+        <div class="flex-column">
+          Urlaubstage vom Vorjahr
+        </div>
+        <div class="flex-column">
+          4
+        </div>
+        <div class="flex-column">
+        </div>
+        <div class="flex-column">
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-column">
+          Urlaubstage
+        </div>
+        <div class="flex-column">
+          31
+        </div>
+        <div class="flex-column">
+        </div>
+        <div class="flex-column">
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-column">
+          Unter-/Überstunden vom Vorjahr
+        </div>
+        <div class="flex-column">
+          34,50
+        </div>
+        <div class="flex-column">
+        </div>
+        <div class="flex-column">
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<p></p>
+
+<div class="table-container mat-elevation-z8">
 
   <mat-table #table [dataSource]="dataSource" matSort>
 
@@ -46,8 +91,16 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="remainingLeave">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> restlicher Urlaub</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.remainingLeave}}
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns; let last = last;"
+             [ngClass]="{'totals-row': last}"></mat-row>
 
   </mat-table>
 

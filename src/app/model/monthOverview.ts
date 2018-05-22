@@ -6,6 +6,7 @@ export class MonthOverview {
   overtime: number;
   leave: number;
   sickDays: number;
+  remainingLeave: string;
 
   constructor(values?: MonthOverview) {
     if (values) {

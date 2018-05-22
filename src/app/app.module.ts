@@ -14,7 +14,8 @@ import {
   MatProgressSpinnerModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule, MatTableModule,
+  MatSidenavModule,
+  MatTableModule,
   MatTabsModule,
 } from '@angular/material';
 import {AppComponent} from './app.component';
@@ -33,6 +34,7 @@ import {OverviewComponent} from './components/overview/overview.component';
 import {AppRoutingModule} from './app-routing.module';
 import localeDe from '@angular/common/locales/de';
 import {registerLocaleData} from '@angular/common';
+
 registerLocaleData(localeDe);
 
 @NgModule({
@@ -70,6 +72,7 @@ registerLocaleData(localeDe);
     MatSelectModule,
     MatMenuModule,
     MatTableModule,
+    MatCardModule,
   ],
   exports: [
     TimePipe,

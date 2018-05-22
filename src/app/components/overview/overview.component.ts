@@ -9,7 +9,7 @@ import {MonthOverview} from "../../model/monthOverview";
 })
 export class OverviewComponent implements OnInit {
 
-  displayedColumns = ['monthName', 'targetHours', 'actualHours', 'overtime', 'leave', 'sickDays'];
+  displayedColumns = ['monthName', 'targetHours', 'actualHours', 'overtime', 'leave', 'sickDays', 'remainingLeave'];
   dataSource: MatTableDataSource<MonthOverview>;
 
   allRows: MonthOverview[];
@@ -24,6 +24,7 @@ export class OverviewComponent implements OnInit {
         overtime: 10,
         leave: 0,
         sickDays: 0,
+        remainingLeave: '',
       },
       {
         monthName: 'Februar',
@@ -31,13 +32,22 @@ export class OverviewComponent implements OnInit {
         actualHours: 167,
         overtime: 6,
         leave: 0,
-        sickDays: 0,
+        sickDays: 1,
+        remainingLeave: '',
+      },
+      {
+        monthName: 'Gesamt',
+        targetHours: 990,
+        actualHours: 870,
+        overtime: 16,
+        leave: 0,
+        sickDays: 1,
+        remainingLeave: '24',
       },];
 
   }
 
   ngOnInit() {
-
     this.dataSource = new MatTableDataSource<MonthOverview>(this.allRows);
   }
 
