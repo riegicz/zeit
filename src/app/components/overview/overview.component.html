@@ -1,3 +1,56 @@
-<p>
-  overview works!
-</p>
+<p></p>
+
+<div class="table-container mat-elevation-z8">
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="monthName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Monat</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.monthName}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="targetHours">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Soll-Stunden</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.targetHours}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actualHours">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ist-Stunden</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.actualHours}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="overtime">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Überstunden</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.overtime}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="leave">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Urlaubstage</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.leave}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sickDays">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Krankheitstage</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.sickDays}}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+</div>
+
+<p></p>

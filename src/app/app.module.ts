@@ -14,7 +14,7 @@ import {
   MatProgressSpinnerModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule,
+  MatSidenavModule, MatTableModule,
   MatTabsModule,
 } from '@angular/material';
 import {AppComponent} from './app.component';
@@ -69,6 +69,7 @@ registerLocaleData(localeDe);
     MatCardModule,
     MatSelectModule,
     MatMenuModule,
+    MatTableModule,
   ],
   exports: [
     TimePipe,
