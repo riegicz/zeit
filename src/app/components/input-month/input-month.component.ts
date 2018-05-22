@@ -10,10 +10,11 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class InputMonthComponent implements OnInit {
 
-  year: number;
-  months: string[];
-  days: Moment[];
-  inputMonthForm: FormGroup;
+  inputMonthForm: FormGroup; // form controls
+  months: string[]; // options for month-dropdown
+  years: number[]; // options for year-dropdown
+  days: Moment[]; // all days to be displayed
+
 
   constructor(private fb: FormBuilder) {
     moment.locale('de');
@@ -21,17 +22,22 @@ export class InputMonthComponent implements OnInit {
 
   ngOnInit() {
     this.inputMonthForm = this.createForm();
-    const rightNow: Moment = moment();
-    this.year = rightNow.year();
-    this.inputMonthForm.get('month').setValue(rightNow.month());
     this.months = moment.months();
+    this.years = [2018, 2019];
     this.days = this.daysInMonth();
-    this.inputMonthForm.get('month').valueChanges.subscribe(() => this.changeValue());
+  }
+
+  private createForm() {
+    return this.fb.group({
+      month: [moment().month(),],
+      year: [moment().year(),],
+    });
   }
 
   daysInMonth(): Array<Moment> {
     // selected month
-    const date: string = String(this.year) + '-' + String(this.inputMonthForm.get('month').value + 1);
+    const date: string = String(this.inputMonthForm.get('year').value) + '-' + String(this.inputMonthForm.get('month').value + 1);
+
     const days = new Array<Moment>();
     const start: Moment = moment(date, 'YYYY-MM');
     for (const end = moment(start).add(1, 'month'); start.isBefore(end); start.add(1, 'day')) {
@@ -40,14 +46,8 @@ export class InputMonthComponent implements OnInit {
     return days;
   }
 
-  changeValue() {
+  changeMonth() {
     this.days = this.daysInMonth();
-  }
-
-  private createForm() {
-    return this.fb.group({
-      month: ['',],
-    });
   }
 
 }
