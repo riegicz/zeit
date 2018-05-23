@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from "@angular/material";
 import {MonthOverview} from "../../model/monthOverview";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-overview',
@@ -9,12 +11,14 @@ import {MonthOverview} from "../../model/monthOverview";
 })
 export class OverviewComponent implements OnInit {
 
+  overviewForm: FormGroup; // form controls
+  years: number[]; // options for year-dropdown
+
   displayedColumns = ['monthName', 'targetHours', 'actualHours', 'overtime', 'leave', 'sickDays', 'remainingLeave'];
   dataSource: MatTableDataSource<MonthOverview>;
-
   allRows: MonthOverview[];
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
 
     this.allRows = [
       {
@@ -48,7 +52,16 @@ export class OverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.overviewForm = this.createForm();
+    this.years = [2018, 2019];
     this.dataSource = new MatTableDataSource<MonthOverview>(this.allRows);
+  }
+
+  private createForm() {
+    return this.fb.group({
+      year: [moment().year(),],
+      dateOfLastSigning: ['10.11.2018'],
+    });
   }
 
 }

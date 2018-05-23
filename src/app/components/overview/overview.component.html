@@ -1,3 +1,39 @@
+<form [formGroup]="overviewForm">
+  <div class="flex-row">
+    <div class="flex-column">
+      <mat-form-field>
+        <input matInput placeholder="Zuletzt signiert am" formControlName="dateOfLastSigning">
+      </mat-form-field>
+      <mat-action-row>
+        <button mat-button color="primary">Jetzt signieren</button>
+      </mat-action-row>
+    </div>
+    <div class="flex-column">
+    </div>
+    <div class="flex-column">
+    </div>
+    <div class="flex-column">
+      <mat-form-field class="selector">
+        <mat-select formControlName="year">
+          <mat-option *ngFor="let y of years;" [value]="y">
+            {{ y }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-column">
+    </div>
+    <div class="flex-column">
+    </div>
+    <div class="flex-column">
+    </div>
+    <div class="flex-column">
+    </div>
+  </div>
+</form>
+
 <p></p>
 
 <div class="table-container mat-elevation-z8">

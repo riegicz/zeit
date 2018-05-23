@@ -1,3 +1,10 @@
+.selector{
+  float: right;
+  margin-right: 2%;
+  height: 69px;
+  width: 140px;
+}
+
 .zeit-card-light {
   background: #E0F2F1;
 }
@@ -30,4 +37,9 @@
   background: #f5f5f5;
   border-top: 1px solid #CCC;
   font-weight: bold;
+}
+
+form {
+  margin-left: 2%;
+  margin-right: 2%;
 }
